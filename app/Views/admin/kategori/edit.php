@@ -8,24 +8,18 @@
             <div class="col-lg-9">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h2>Tambah Kategori</h2>
+                        <h2>Edit Kategori</h2>
                     </div>
                     <div class="card-body">
-                        <form action="/admin/kategori/store" method="POST">
+                        <form action="/admin/kategori/update/<?= $kategori['id_kategori'] ?>" method="POST">
                             <?php echo csrf_field() ?>
                             <div class="form-group">
                                 <label for="inputAddress">Nama Kategori</label>
-                                <input type="text" class="form-control  <?= ($validation->hasError('nama_kategori')) ? 'is-invalid' : '' ?>" name="nama_kategori" id="nama_buku" placeholder="Nama Kategori">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('nama_kategori') ?>
-                                </div>
+                                <input type="text" class="form-control" name="nama_kategori" id="nama_buku" value="<?= $kategori['nama_kategori'] ?>">
                             </div>
                             <div class="form-group">
                                 <label for="">Deskripsi</label>
-                                <textarea name="deskripsi" id="deskripsi" class="form-control <?= ($validation->hasError('deskripsi')) ? 'is-invalid' : '' ?>" cols="30" rows="6"></textarea>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('deskripsi') ?>
-                                </div>
+                                <textarea name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="6"><?= $kategori['deskripsi'] ?></textarea>
                             </div>
                             <button type="submit" class="btn btn-lg btn-primary">Submit</button>
                         </form>

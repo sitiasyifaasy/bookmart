@@ -7,14 +7,23 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="card">
+                    <?php if (session()->getFlashdata('pesan')) : ?>
+                        <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                            <?= session()->getFlashdata('pesan') ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php endif; ?>
                     <div class="card-header card-header-primary">
                         <h2>Daftar Kategori</h2>
+                        <a href="/admin/kategori/create" class="btn btn-primary">Tambah Kategori</a>
                     </div>
                     <div class="card-body">
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>ID Kategori</th>
+                                    <th>ID</th>
                                     <th>Nama</th>
                                     <th>Deskripsi</th>
                                     <th>Action</th>
@@ -26,7 +35,17 @@
                                         <td><?= $k['id_kategori'] ?></td>
                                         <td><?= $k['nama_kategori'] ?></td>
                                         <td><?= $k['deskripsi'] ?></td>
-                                        <td><a href="/admin/kategori/<?= $k['id_kategori']; ?>" class="btn btn-success">Detail</a></td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <span class="mr-1">
+                                                    <a href="/admin/kategori/edit/<?= $k['slug'] ?>" class="btn btn-sm"><i class="fas fa-edit"></i></a>
+                                                </span>
+                                                <span>
+                                                    <a href="/admin/kategori/hapus/<?= $k['id_kategori']; ?>" class="btn btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                                </span>
+                                            </div>
+
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

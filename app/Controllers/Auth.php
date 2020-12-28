@@ -19,7 +19,7 @@ class Auth extends BaseController
             'validation' => Services::validation()
         ];
 
-        return view('auth', $data);
+        return view('auth_view', $data);
     }
 
     public function register()
