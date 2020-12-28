@@ -80,7 +80,8 @@ class Auth extends BaseController
                     'email_user'         => $data['email_user'],
                     'telp_user'          => $data['telp_user'],
                     'jns_kelamin'        => $data['jns_kelamin'],
-                    'level'              => $data['level']
+                    'level'              => $data['level'],
+                    'is_login'           => true
                 ];
 
                 $session->set($session_data);
@@ -100,6 +101,9 @@ class Auth extends BaseController
 
     //--------------------------------------------------------------------
 
-
-
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/auth');
+    }
 }
