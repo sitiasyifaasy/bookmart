@@ -46,6 +46,7 @@ class Penulis extends BaseController
 
     public function edit($id_penulis)
     {
+        $data['validation'] = \Config\Services::validation();
         $data['penulis'] = $this->penulisModel->where(['id_penulis' => $id_penulis])->first();
         return view('admin/penulis/edit', $data);
     }
@@ -77,7 +78,7 @@ class Penulis extends BaseController
 
     public function delete($id)
     {
-        $this->kategoriModel->find($id)->delete();
+        $this->penulisModel->delete($id);
         session()->setFlashdata('pesan', 'Data penulis berhasil dihapus');
         return redirect()->to('/admin/penulis');
     }

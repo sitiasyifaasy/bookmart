@@ -40,9 +40,12 @@
                                                 <span class="mr-1">
                                                     <a href="/admin/penulis/edit/<?= $k['id_penulis'] ?>" class="btn btn-sm"><i class="fas fa-edit"></i></a>
                                                 </span>
-                                                <span>
-                                                    <a href="/admin/penulis/hapus/<?= $k['id_penulis']; ?>" class="btn btn-sm"><i class="fas fa-trash-alt"></i></a>
-                                                </span>
+                                                <form action="/admin/penulis/delete/<?= $k['id_penulis']; ?>" method="POST">
+                                                    <?= csrf_field() ?>
+                                                    <span>
+                                                        <button type="submit" class="btn btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                                    </span>
+                                                </form>
                                             </div>
 
                                         </td>

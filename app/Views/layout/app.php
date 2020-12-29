@@ -18,6 +18,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
     <link href="/assets/lib/slick/slick.css" rel="stylesheet">
     <link href="/assets/lib/slick/slick-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -27,6 +28,7 @@
     <script src="/assets/lib/easing/easing.min.js"></script>
     <script src="/assets/lib/slick/slick.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
 
     <!-- Template Stylesheet -->
     <link href="/assets/css/style.css" rel="stylesheet">
@@ -74,9 +76,11 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Manage</a>
                                 <div class="dropdown-menu">
+                                    <a href="/admin/buku" class="dropdown-item">Buku</a>
                                     <a href="/admin/kategori" class="dropdown-item">Kategori</a>
                                     <a href="/admin/penulis" class="dropdown-item">Penulis</a>
-                                    <a href="#" class="dropdown-item">Buku</a>
+                                    <a href="/admin/penerbit" class="dropdown-item">Penerbit</a>
+                                    <a href="/admin/user" class="dropdown-item">User</a>
                                     <a href="#" class="dropdown-item">Order</a>
                                 </div>
                             </div>

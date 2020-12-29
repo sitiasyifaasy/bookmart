@@ -16,8 +16,7 @@
                         </div>
                     <?php endif; ?>
                     <div class="card-header card-header-primary">
-                        <h2>Daftar Kategori</h2>
-                        <a href="/admin/kategori/create" class="btn btn-primary">Tambah Kategori</a>
+                        <h2>Daftar User</h2>
                     </div>
                     <div class="card-body">
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -25,22 +24,29 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nama</th>
-                                    <th>Deskripsi</th>
+                                    <th>Email</th>
+                                    <th>No. Telp</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Level</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($kategori as $k) : ?>
+                                <?php foreach ($user as $k) : ?>
                                     <tr>
-                                        <td><?= $k['id_kategori'] ?></td>
-                                        <td><?= $k['nama_kategori'] ?></td>
-                                        <td><?= $k['deskripsi'] ?></td>
+                                        <td><?= $k['id_user'] ?></td>
+                                        <td><?= $k['nama_user'] ?></td>
+                                        <td><?= $k['email_user'] ?></td>
+                                        <td><?= $k['telp_user'] ?></td>
+                                        <td><?= $k['jns_kelamin'] ?></td>
+                                        <td><?= $k['level'] ?></td>
+                                        <td><?= $k['created_at'] ?></td>
+                                        <td><?= $k['updated_at'] ?></td>
                                         <td>
                                             <div class="d-flex">
-                                                <span class="mr-1">
-                                                    <a href="/admin/kategori/edit/<?= $k['slug'] ?>" class="btn btn-sm"><i class="fas fa-edit"></i></a>
-                                                </span>
-                                                <form action="/admin/kategori/delete/<?= $k['id_kategori']; ?>" method="POST">
+                                                <form action="/admin/user/delete/<?= $k['id_user']; ?>" method="POST">
                                                     <?= csrf_field() ?>
                                                     <span>
                                                         <button type="submit" class="btn btn-sm"><i class="fas fa-trash-alt"></i></button>
@@ -68,6 +74,15 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fa fa-child"></i>Kategori</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Penulis</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Penerbit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-child"></i>User</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Order</a>

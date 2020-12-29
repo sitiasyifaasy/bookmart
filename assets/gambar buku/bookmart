@@ -1,0 +1,231 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               10.4.13-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
+-- HeidiSQL Version:             10.2.0.5599
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Dumping database structure for bookmart
+CREATE DATABASE IF NOT EXISTS `bookmart` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `bookmart`;
+
+-- Dumping structure for table bookmart.buku
+CREATE TABLE IF NOT EXISTS `buku` (
+  `id_buku` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_buku` varchar(50) NOT NULL,
+  `deskripsi` varchar(5000) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `stok` int(11) NOT NULL,
+  `halaman` varchar(50) NOT NULL,
+  `tgl_terbit` date DEFAULT NULL,
+  `format` varchar(50) NOT NULL,
+  `cover` varchar(50) DEFAULT NULL,
+  `id_penulis` int(11) DEFAULT NULL,
+  `id_penerbit` int(11) DEFAULT NULL,
+  `id_kategori` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_buku`),
+  KEY `FK_buku_penulis` (`id_penulis`),
+  KEY `FK_buku_penerbit` (`id_penerbit`),
+  KEY `FK_buku_kategori` (`id_kategori`),
+  CONSTRAINT `FK_buku_kategori` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`),
+  CONSTRAINT `FK_buku_penerbit` FOREIGN KEY (`id_penerbit`) REFERENCES `penerbit` (`id_penerbit`),
+  CONSTRAINT `FK_buku_penulis` FOREIGN KEY (`id_penulis`) REFERENCES `penulis` (`id_penulis`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table bookmart.buku: ~36 rows (approximately)
+/*!40000 ALTER TABLE `buku` DISABLE KEYS */;
+INSERT INTO `buku` (`id_buku`, `nama_buku`, `deskripsi`, `harga`, `stok`, `halaman`, `tgl_terbit`, `format`, `cover`, `id_penulis`, `id_penerbit`, `id_kategori`) VALUES
+	(1, 'Jika Kita Tak Pernah Baik - Baik Saja', 'Jika Kita Tak Pernah Baik-Baik Saja\r\nBagaimana caranya aku bisa mencintai diriku ketika yang kulakukan kepada diriku adalah kesalahan-kesalahan bodoh tanpa hentinya?\r\n\r\nJika Kita Tak Pernah Baik-Baik Saja\r\nSusah mencintai seseorang yang terus melakukan kesalahan, lantas bagaimana kalau diri ini yang terus melakukan kesalahan? How can I even start loving myself?\r\n\r\nJika Kita Tak Pernah Baik-Baik Saja\r\nLalu, bagaimana caranya aku bisa menerima segala kekuranganku?\r\nBagaimana aku bisa menjadi diriku sendiri kalau aku sendiri tidak suka diriku sendiri?\r\n\r\nKita pernah mengalami krisis, tak pernah baik-baik saja menerima keadaan dan menyalahkan diri sendiri. Mengarungi hidup adalah tentang seni mencintai—termasuk mencintai diri sendiri dengan segala kekurangan, dan berusaha memperbaikinya. Jika Kita Tak Pernah Baik-Baik Saja, mengajak kita mengenal arti kecewa dan bahagia demi mencintai diri sendiri dan sesuatu yang lebih dari segalanya.', 93000, 20, '216', '2021-01-04', 'Soft Cover', '', 1, 1, NULL),
+	(2, 'Pulang Pergi', '"Ada jodoh yang dipertemukan lewat tatapan pertama. Ada persahabatan yang diawali lewat sapa hangat. Bagaimana jika takdir bersama ternyata, diawali dengan pertarungan mematikan ?.\r\nLantas semua cerita berkelindan dengan, pengejaran demi pengejaran mencari jawaban? Pulang-Pergi"', 89000, 20, '417', '2021-01-13', 'Soft Cover', NULL, 2, 2, NULL),
+	(3, 'Pulang', 'Sebuah kisah tentang perjalanan pulang, melalui pertarungan demi pertarungan, kesedihan demi kesedihan, untuk memeluk erat semua kebencian dan rasa sakit. \r\nPulang.', 89000, 20, '404', '2015-09-01', 'Soft Cover', NULL, 2, 2, NULL),
+	(4, 'Pergi', 'Sebuah kisah tentang menemukan tujuan, ke mana hendak pergi, melalui kenangan demi kenangan masa lalu, pertarungan hidup-mati, untuk memutuskan ke mana langkah kaki akan dibawa.', 89000, 20, '459', '2018-04-01', 'Soft Cover', NULL, 2, 2, NULL),
+	(5, 'Sebuah Seni Untuk Bersikap Bodo Amat', '"Selama beberapa tahun belakangan, Mark Manson—melalui blognya yang sangat populer—telah membantu mengoreksi harapan-harapan delusional kita, baik mengenai diri kita sendiri maupun dunia. Ia kini menuangkan buah pikirnya yang keren itu di dalam buku hebat ini.\r\n“Dalam hidup ini, kita hanya punya kepedulian dalam jumlah yang terbatas. Makanya, Anda harus bijaksana dalam menentukan kepedulian Anda.” Manson menciptakan momen perbincangan yang serius dan mendalam, dibungkus dengan cerita-cerita yang menghibur dan “kekinian”, serta humor yang cadas. Buku ini merupakan tamparan di wajah yang menyegarkan untuk kita semua, supaya kita bisa mulai menjalani kehidupan yang lebih memuaskan, dan apa adanya. "\r\n', 67000, 20, '256', '2018-02-05', 'Soft Cover', NULL, 3, 3, NULL),
+	(6, 'Buku Minta Dibanting', 'Hei, kalian yang ngakunya single-but-unavailable, masih sering di-PHP-in? Lo yang mendadak berharap cuma gara-gara di-chat, atau gimana? Suka ngasih kode ke gebetan tapi nggak mempan? Atau belum bisa move on dari mantan yang udah gandeng pasangan barunya? Buku ini pas banget buat kalian. Bisa kalian sobek dan kirim langsung ke target, daripada ngasih kode via media sosial yang dilihat-juga-nggak sama target. Izinkan Mblo dan Mblu membantu kalian. Tapi jangan baper ya, soalnya ini tuh Buku Minta Dibanting banget!', 63000, 20, '64', '2020-02-17', 'Soft Cover', NULL, 4, 4, NULL),
+	(7, 'Disney Princess Beginnings: Pertunjukan Perdana Au', 'Ringan tangan + ingin tahu = Aurora Aurora belia sejak dulu selalu diberitahu ketiga bibinya agar jangan pernah bicara pada orang asing atau jalan-jalan jauh dari rumah. Tapi ia bertemu sekelompok aktor keliling dan ia sendiri ikut berperan di atas dan di luar panggung! Apakah dunia di luar hutan begitu berbahaya seperti yang diperingatkan padanya?', 75000, 20, '136', '2019-06-24', 'Soft Cover', NULL, 5, 4, NULL),
+	(8, 'Burung Hantu Kecil Putih (The Little White Owl)', 'Suatu hari, burung hantu yang berwarna putih polos terbang melihat dunia. Ia bertemu dengan kawanan burung hantu yang bulunya berwarna-warni dan bercorak menarik. Burung hantu putih ingin membagi roti bakarnya dan bercerita pada mereka. Tapi burung yang berwarna-warni itu tidak ingin berteman dengan burung hantu yang warnanya hanya putih polos.', 65000, 20, '32', '2012-12-12', 'Soft Cover', NULL, NULL, 5, NULL),
+	(9, 'Suara Greta', 'Greta adalah seorang pelajar di Swedia. Dia anak yang pendiam, selalu duduk di belakang dan jarang berbicara. Akan tetapi, Greta selalu berpikir tentang perubahan iklim dan betanya-tanya apakah dia akan mempunyai masa depan.\r\nGreta menyadari bahwa dia bisa melakukan perubahan. Dia mulai berpikir, jika orang dewasa tidak akan melakukan sesuatu untuk masa depan, anak-anaklah yang harus melakukan perubahan. Sebab, generasi mudalah yang akan hidup di masa depan.', 119000, 20, '36', '2020-08-08', 'Soft Cover', NULL, 6, 6, NULL),
+	(10, 'Serangan Serangga Flu', 'Hatcih! Hatcih!\r\nKeluar ingus, sakit kepala, dan demam.\r\nPasti karena serangan para serangga flu!\r\nHmm, bagaimana cara melawan serangan mereka, ya?', 58000, 20, '40', '2020-12-30', 'Soft Cover', NULL, NULL, 7, NULL),
+	(11, 'The House at Pooh Corner', '"Apa yang akan kau lakukan, kalau rumahmu tertiup angin?” tanya Christopher Robin.\r\n\r\nSebelum Piglet memikirkannya, Pooh telah menjawab pertanyaan itu untuknya. “Dia akan tinggal bersamaku,” kata Pooh. “Iya, ‘kan, Piglet?” Piglet meremas tangan Pooh.\r\n\r\n“Terima kasih, Pooh,” katanya. “Dengan senang hati.”\r\n\r\nDi Hutan Seratus Ekar, salju sedang turun dengan lebatnya, Pooh dan Piglet teringat pada teman mereka, Eeyore, yang tidak punya rumah. Mereka pun memutuskan untuk memberi kejutan dengan mendirikan rumah untuk Eeyore yang kemudian mereka sebut sebagai Pojok Pooh. Bukan hanya itu saja kejadian mengasyikkan yang terjadi di Hutan. Masih ada kisah tentang Pooh dan Piglet yang terperosok ke dalam lubang perangkap untuk Heffalump; rumah pohon Owl yang tumbang karena angin kencang; dan Tigger, tetangga baru mereka yang suka membal dan membuat mereka kesal. Pooh juga menemukan permainan baru yang sangat seru, hingga Eeyore yang penyendiri pun, ikut bermain. Permainan apakah itu?', 75000, 20, '208', '2017-08-08', 'Soft Cover', NULL, 7, 8, NULL),
+	(12, 'Sampahisasi', '\'Bukan! Ini bukan komik tentang penyuluhan bahaya limbah sampah. Buku ini isinya komik-komik tang tidak mempunyai pesan moral tapi sayang banget kalau dilewatkan (Huawaw!!!) Berisikan 90% cerita baru yang sudah gue tulis dari awal banget gue bikin komik. Komik ini bertemakan komik strip yang membahas kehidupan sehari-hari Penasaran dong? Yuk beli!!! Ikhlasin duit lo...', 79500, 20, '124', '2019-11-04', 'Soft Cover', NULL, 8, 9, NULL),
+	(13, 'One Piece Blue : Grand Data File (Terbit Ulang)', 'Membuka habis-habisan sisi lain dunia One Piece!! Ketahui lebih dalam lagi mengenai One Piece dan berbagai rancangannya, seperti Making of One Piece, dengan mengetahui kisah di balik layar dan Data File yang menunjukkan sisi lain dunia para karakternya!', 40000, 20, '192', '2017-12-13', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(14, 'Detektif Conan The Movie: The Last Wizard of The C', 'Akhirnya, trik tak terduga yang tersembunyi di dalam telur dan julukan pesulap akhir abad, terbongkar! Jangan lewatkan juga adegan akhir yang mengharukan!!', 40000, 20, '200', '2020-12-23', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(15, 'The Promised Neverland 15', 'Di tengah kemajuan rencana meruntuhkan masyarakat iblis demi kemerdekaan anak-anak bahan makanan, Emma mendapati kegelapan hati manusia yang haus balas dendam, sehingga memutuskan mencari jalan lain yang takkan melukai baik manusia maupun iblis\r\n\r\nWahai Anak-Anak Abadi, hadapi dan kalahkan keputusasaan! Simak kisah fantasi menegangkan seputar pelarian anak-anak ini!!', 28000, 20, '192', '2020-12-23', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(16, 'Dark Hunter After School 02', 'Keinoshin Susa dan Shotaro Inada, Dark Hunter yang membersihkan kegelapan.\r\n\r\nMereka ditetapkan untuk menjadi partner, namun keduanya tidak jujur terhadap perasaan masing-masing dan sering tidak sejalan, padahal di pertemuan pertama mereka waktu kecil langsung akrab dan berteman baik, apa yang telah terjadi di masa lalu mereka...!?', 30000, 20, '200', '2020-12-23', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(17, '#Nggakperludiet : Untuk Menjadi Langsing , Sehat d', 'Buku yang berangkat dari pengalaman pribadi selalu menarik untuk dibaca. humanis dan apa adanya. Terlebih lagi buku ini dilengkapi juga dengan tips-tips praktis dan berguna. Ringan tetapi bermanfaat.\r\nNAJWA SHIHAB\r\nPendiri Narasi\r\n\r\nKalau soal niat kuat, komitmen, dan disiplin, adik saya ini tidak diragukan lagi. Apalagi keinginannya untuk kurus ia tempuh sampai berhasil. Dalam buku ini, proses disiplin hidup yang menurut saya bisa menginspirasi kita khususnya kaum perempuan untuk tetap sehat dan langsing tanpa harus diet ketat.\r\nMARCELLA ZALIANTY S.SOS., M.H', 89000, 20, '184', '2020-10-28', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(18, '101 CARA KREATIF ALA STEVE JOBS', 'Sebagai seorang innovator dan pendiri perusahaan Apple, Steve Jobs telah membawa perubahan besar dalam dunia teknologi. Genius, ambisius, pantang menyerah. Mungkin itu pengggambaran yang tepat untuk sosok Steve Jobs. Melalui iPod dia telah menciptakan sebuah revolusi teknologi dalam industry music. Bahkan, kreativitas dan jiwa estetiknya telah membawa Pixar mencapai puncak kejayaan malalui film animasi, Toy Story.\r\n\r\nSteve Jobs adalah sosok yang melampaui zaman. Ada seratus sati (101) cara kreatif yang bisa kita teladani dari Sete Jobs, sebagai seorang pembawa perubahan. Ingatlah kutipan terkenal Jobs, â€œStay hungry, stay foolish.â€ (Selalu haus ilmu pengetahuan, dan teruslah mempelajari hal baru).', 88500, 20, '324', '2019-01-01', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(19, 'A Guide To Health', 'Ketidaktahuan adalah salah satu sumber penyebab penyakit. Sering sekali kita dibuat bingung oleh penyakit-penyakit yang paling biasa akibat kebodohan belaka, dan terdorong keinginan besar untuk menjadi sehat, kita hanya membuat masalah lebih parah.\r\nTidak ada yang begitu bersangkut paut dengan kita seerat tubuh kita, tetapi juga mungkin tidak ada yang mengenainya ketidaktahuan kita begitu mendalam, atau ketidakpedulian kita begitu menyeluruh.\r\nâ€œPencegahan lebih baik daripada pengobatanâ€, jauh lebih mudah dan lebih aman untuk mencegah penyakit dengan mematuhi dalil kesehatan daripada mulai menyembuhkan penyakit yang disebabkan oleh kebodohan dan kecerobohan kita sendiri. Dengan demikian, tugas semua orang yang bijaksanalah untuk memahami dengan benar dalil-dalil kesehatan.\r\nâ€œPencegahan lebih baik daripada pengobatanâ€, jauh lebih mudah dan lebih aman untuk mencegah penyakit dengan mematuhi dalil kesehatan daripada mulai menyembuhkan penyakit yang disebabkan oleh kebodohan dan kecerobohan kita sendiri. Dengan demikian, tugas semua orang yang bijaksanalah untuk memahami dengan benar dalil-dalil kesehatan.', 39000, 20, '175', '2017-07-12', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(20, 'Asal Usul Manusia', 'Asal-usul Manusia', 70000, 20, '238', '2019-04-01', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(21, 'Ayat-Ayat Sains', 'Sejauh yang kita pelajari selama menempuh pendidikan, sains kerap dipandang sebagai suatu pencapaian yang luar biasa, bahkan sains dipandang satu alatu terpercaya untuk membuktikan kebenaran.', 55000, 20, '224', '2019-11-01', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(22, 'Segala-Galanya Ambyar', 'Apakah kamu merasa kecewa dengan hidupmu? Apakah kamu merasa cemas secara terus-menerus? Apakah kamu merasa bahwa dunia di sekelilingmu buruk dan jahat?\r\nYa, dunia ini memang kacau, dunia ini memang ambyar, tapi itu karena Anda tidak sadar bahwa harapan Anda terlalu disilaukan oleh keinginan-keinginan Anda sendiri yang tidak masuk akal.\r\n\r\nJadi, lepaskanlah harapan - harapan itu, jika Anda ingin waras!\r\n#AmbyarkanHarapan untuk hidup yang lebih tenang.', 90000, 20, '368', '2020-02-17', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(23, 'Everything in Between', 'Dear diary,\r\n\r\nTidak ada lagi jalan untuk kembali.\r\n\r\nAkankah ada beruang di dalam tenda kami? Akankah kami merindukan Ben dan Jer setiap hari? Akankah kami jatuh sakit di negeri yang tidak kami kenal? Akankah ada momen yang memaksa saya untuk menggunakan pepper spray? Akankah kami melihat unta di Turkmenistan? Akankah kami menemukan air di pegunungan Pamir? Akankah turun salju? Akankah ada hari yang saya sesali?\r\n\r\nAkankah pundak saya cukup kuat untuk memikul seluruh pengalaman dan pelajaran yang saya temui?\r\n\r\nYa Tuhan, biarkan kami bertualang, merasa kagum, biarkan hati kami terpecah belah sehingga kami dapat belajar arti menghargai yang sesungguhnya. Ya Tuhan, kuatkanlah keyakinan akan harapan dan mimpi kami, jadikanlah nyata. Biarkan kami menemukan kepercayaan di tengah keasingan dan ketidaktahuan yang jauh dari rasa nyaman. Ya Tuhan, tuntunlah kami pulang dengan aman.\r\n\r\nDear diary, dalam setiap putaran pedal yang kami kayuh dari Belanda menuju Indonesia, saya akan berbagi kepadamu segala sesuatu yang ada di antaranya.\r\n\r\nSaya berjanji,\r\n\r\nMarlies', 89000, 20, '212', '2019-04-01', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(24, 'Filosofi Teras Filsafat Yunani-Romawi Kuno Untuk M', 'ebih dari 2000 tahun lalu, sebuah mazhab filsafat menemukan akar masalah dan juga solusi dari banyak emosi negatif. Stoisisme, atau Filosofi Teras, adalah filsafat Yunani-Romawi kuno yang bisa membantu kita mengatasi emosi negatif dan menghasilkan mental yang tangguh dalam menghadapi naik-turun nya kehidupan.\r\n\r\n\r\n\r\nJauh dari kesan filsafat sebagai topik berat dan mengawang-awang, Filosofi Teras justru bersifat praktis dan relevan dengan kehidupan Generasi Milenial dan Gen-Z masa kini.', 98000, 20, '346', '2018-11-26', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(25, '250 Questions That Will Change Your Life', 'Every answer is inside you. Manusia memiliki kapasitas yang luar biasa untuk merefleksikan diri sendiri melalui pikiran, emosi, kebiasaan, keyakinan, dan hubungan mereka dengan orang lain. Kesadaran diri inilah yang membuat kita begitu cerdas dan memberi kita kemampuan untuk menyesuaikan diri dengan lingkungan secara efektif. Salah satu alat paling berguna yang kita miliki saat merenung adalah kekuatan untuk mengajukan pertanyaan kepada diri sendiri. Pertanyaan yang tepat akan membantu kita untuk mulai berpikir dengan cara yang baru sehingga kita menemukan jawaban yang tidak mampu kita lihat saat kita menganalisa masalah di dalam pikiran dan berusaha mencari jawabannya di sana. Buku ini mengajak kita untuk mengenali diri lebih jauh, menjadi manusia baru yang mencintai orang lain tanpa memikirkan diri sendiri; dan mencintai diri sendiri secara utuh tanpa harus mencari-cari kebahagiaan dari orang lain, benda lain, dan dunia luar.', 88000, 20, '112', '2019-08-05', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(26, 'Zero To One', 'Apa perusahaan bernilai bisnis tinggi yang belum dibangun oleh siapa pun? Penerus Bill Gates tidak akan membuat sistem operasi. Penerus Larry Page atau Sergey Brin tidak akan membuat mesin pencari. Jika Anda meniru tokoh-tokoh itu, Anda tidak memetik pelajaran dari mereka. \r\n\r\nTentu saja, meniru itu lebih mudah daripada membuat sesuatu yang baru. Mengerjakan sesuatu yang sudah kita ketahui caranya sama saja membawa dunia ini dari 1 ke n, hanya menambahkan sesuatu yang memang sudah ada dan biasa. Namun, setiap kali kita menciptakan sesuatu yang baru, kita berangkat dari 0 ke 1. Buku ini akan memberi tahu bagaimana caranya. \r\n\r\n“Peter Thiel telah mendirikan banyak perusahaan pelopor, dan Zero to One akan mengajarkan caranya.” \r\n-ELON MUSK,- \r\nCEO SpaceX dan Tesla \r\n\r\n“Buku ini membawa ide-ide baru yang menyegarkan tentang cara menciptakan nilai di dunia.” \r\n-MARK ZUCKERBERG,- \r\nCEO Facebook \r\n\r\n“Jika ada buku yang ditulis oleh seorang pengambil risiko, bacalah. Khusus untuk buku Peter Thiel, bacalah dua kali. Atau, supaya aman, bacalah tiga kali. Ini buku klasik.” \r\n-NASSIM NICHOLAS TALEB,- \r\npenulis The Black Swan \r\n\r\nPETER THIEL adalah salah satu pendiri PayPal dan Palantir, salah seorang investor luar pertama Facebook, pemodal bagi perusahaan-perusahaan seperti SpaceX dan LinkedIn, serta pendiri Thiel Fellowship yang mendorong kaum muda untuk memprioritaskan belajar ketimbang menempuh pendidikan formal.', 88000, 20, '244', '2015-11-02', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(27, 'The Great Investors (2018)', '"Buku ini akan memberi Anda akses ke pola pikir dan teknik-teknik yang dimiliki para investor tersukses di era saat ini. Yang terpenting, buku ini akan menghindarkan Anda dari kesalahan-kesalahan sama yang telah mereka alami. The Great Investors akan selalu berada di meja saya." Mark Sheridan, Direktur Eksekutif, Nomura International PLC\r\n\r\n"Apakah Anda ingin meningkatkan performa investasi Anda, atau hanya ingin menjadi lebih nyaman dalam mengatur investasi Anda, ide-ide Glen Arnold yang diambil dari kehidupan para investor besar ini akan membantu Anda dalam menentukan tujuan yang ingin Anda raih." Martin White, Pemimpin, UK Shareholder Association\r\n\r\nInvestor terkemuka seperti Warren Buffett, Benjamin Graham, Sir John Templeton, George Soros, dan Anthony Bolton dikenal luas di seluruh dunia. Mereka adalah sekelompok orang yang mempunyai talenta luar biasa dalam mengumpulkan kekayaan.\r\n\r\nBagaimana orang-orang ini dapat menjadi sedemikian sukses?\r\n\r\nStrategi apa yang mereka pakai untuk mengumpulkan kekayaannya?\r\n\r\nApa yang bisa Anda pelajari dari teknik yang mereka gunakan?\r\n\r\nDalam The Great Investors, Glen Arnold mengungkapkan secara ringkas, jelas, dan akurat mengenai filosofi investasi dari para investor terbesar di dunia. Arnold memberikan uraian terinci mengenai taktik-taktik mereka untuk mengumpulkan kekayaan, menangkap elemen-elemen kunci yang mengantarkan mereka sukses merajai pasar dan mengajarkan Anda pelajaran penting yang dapat Anda terapkan dalam strategi investasi Anda.', 109800, 20, '460', '2018-01-03', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(28, 'Startuppedia: Panduan Membangun Startup Ala Silico', 'Gerakan startup di Singapura,Indonesia,Malaysia,Vietnam, Filipina, Taiwan, Thailand, dan Myanmar yang terus Berkembang benar-benar menciptakan iklim kompetisi yang menarik.Tak heran jika wilayah ini menjadi harapan baru bagi munculnya Google atau Facebook generasi baru di masa depan ', 54000, 20, '232', '2015-05-01', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(29, '101 Problem Solving Tentang Pemasaran Produk', 'Pemasaran produk termasuk salah satu hal yang berperan paling vital bagi kelangsungan hidup perusahaan. Sebuah perusahaan dengan produk yang biasa saja, bisa menjadi sangat sukses karena memiliki strategi pemasaran yang baik. Demikian pula sebaliknya, perusahaan dengan produk berkualitas terbaik sekali pun bisa saja bangkrutjika strategi pemasaran yang diterapkan buruk. Akan tetapi, dalam praktiknya, menerapkan strategi pemasaran produk yang bagus tidaklah semudah teori. Ada banyak masalah yang pasti akan muncul seiring dengan semakin meluasnya sasaran dan wilayah pemasaran. Buku yang Anda pegang ini menyajikan berbagai cara mengatasi masalah-masalah pemasaran produk yang kerap muncul dalam bisnis Anda. Mulai dari masalah pemasaran yang berkaitan dengan produk itu sendiri, konsumen, hingga iklan dan promosi. Baca dengan saksama dan terapkan dalam pemasaran produk Anda! Maka, Anda tidak lagi kebingungan mengatasi berbagai masalah pemasaran produk. Selamat mencoba!', 50000, 20, '172', '2020-01-07', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(30, 'Transisi Energi: Suatu Kebijakan, Implementasi, da', 'Pada saat ini, kebutuhan energi masih didominasi oleh energi fosil yang bersumber dari bahan bakar minyak dan batu bara. Namun, pemerintah terus berupaya agar penggunaan bahan bakar fosil tersebut berkurang dan bertransisi menuju penggunaan energi terbarukan seperti biomassa, panas bumi, angin, dan surya. Selain untuk mengatasi energi fosil yang semakin terbatas, kebijakan transisi energi juga dilakukan untuk mengatasi dampak perubahan iklim.\r\nKebijakan transisi energi tersebut disusun secara komprehensif dengan tujuan yang terukur, yaitu mengurangi emisi Gas Rumah Kaca [GRK), menghasilkan energi yang lebih bersih, dan meningkatkan ketahanan energi dengan menggunakan potensi sumber daya yang terbarukan dan efisien. Transisi energi ini menjadi bagian yang tak terpisahkan dari rencana kemandirian energi yang diharapkan dapat berdampak positif terhadap perekonomian nasional.\r\n* * *\r\n"Buku ini diharapkan dapat menjadi sumbangsih Badan Kebijakan Fiskal untuk memberikan informasi kepada publik terkait berbagai upaya yang sudah dan akan dilakukan pemerintah dalam mencapai ketahanan energi nasional yang berkelanjutan, ramah Iingkungan, dan ramah terhadap perubahan iklim. Kami berharap agar buku ini dapat memberikan manfaat yang sebesar-besarnya bagi pembaca untuk bersama-sama meningkatkan ekonomi, membangun bangsa, dan meningkatkan kesejahteraan seluruh masyarakat Indonesia sehingga tercapai tujuan pembangunan berkelanjutan yang telah kita cita-citakan." â€”Febrio Nathan Kacaribu Kepala Badan Kebijakan Fiskal Kementerian Keuangan Republik Indonesia', 240000, 20, '244', '2020-12-23', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(31, '40 Ucapan Terlarang', 'Seseorang yang dapat berbicara dengan lidahnya merupakan karunia besar yang diberikan Allah kepada ciptaan-Nya. Sudah selayaknya kita menggunakan karunia tersebut dengan amanah, bukan dengan berkata buruk dan mendzalimi orang lain. Sebab perkataan yang tidak baik bisa membuat seorang muslim terjerumus ke dalam murka-Nya.', 80000, 20, '176', '2020-11-04', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(32, 'Penelitian Fenomenologi Pendidikan - Teori dan Pra', 'ika Anda pernah mendengar istilah fenomenologi namun belum mengetahui secara detail maksud dari konsep ini, buku ini adalah pilihan tepat untuk Anda. Buku di tangan Anda ini mencoba menjabarkan segala sesuatu yang berkaitan dengan fenomenologi. Secara singkat, fenomenologi merupa- kan salah satu konsep dalam filsafat yang mempunyai titik fokus pada pengungkapan makna dari sebuah fenomena. Pada per- kembangannya, fenomenologi digunakan sebagai salah satu metode dalam metode penelitian kualitatif. Pada buku ini, pembahasan difokuskan pada bagaimana penerapan metode fenomenologi dalam penelitian di bidang pendidikan?\r\n\r\nPenjabaran diawali dengan sejarah kemunculan teori fenomenologi, berbagai konsep pengertian dari berbagai fenomenolog di awal kemunculannya, dan bagaimana penerapannya dalam sebuah penelitian. Pada bab berikutnya, penulis memberikan contoh model penelitian di bidang pendidikan dengan fenomenologi sebagai metode penelitiannya.', 60000, 20, '244', '2018-03-01', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(33, 'Tafsir Tarbawi: Nilai-nilai Pendidikan dalam Al-Qu', 'Tafsir Tarbawi memaparkan ayat-ayat Al-Quran yang diyakini mengandung nilai-nilai atau prinsip-prinsip pendidikan. Para peminat tafsir atau peminat bidang pendidikan diharapkan memperoleh dua kompetensi sekaligus, yaitu menguasai tafsir ayat-ayat Al-Quran tertentu dan memperkuat kompetensi ilmu pendidikan. Untuk itu, materi disusun berdasar aspek- aspek ilmu pendidikan, seperti tujuan pendidikan, metode pendidikan, materi pendidikan, dan sebagainya, kemudian dibahas tafsir ayat-ayat yang terkait.\r\n\r\n\r\nBuku sangat berharga ini dapat menjadi rujukan dan dinikmati oleh kalangan mana pun: akademisi, dai, dan kalangan umum yang hendak memahami wawasan Al-Quran tentang pendidikan untuk diajarkan dan diterapkan dalam keseharian.', 88000, 20, '289', '2019-10-01', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(34, 'Algoritma dan Pemrograman dalam Bahasa Pascal, C, ', 'Buku Algoritma dan Pemrograman dalam Bahasa Pascal, C, dan C++ merupakan edisi baru dari buku sebelumnya, yaitu Algoritma dan Pemrograman dalam Bahasa Pascal dan C. Buku ini disusun bagi siapapun (siswa, mahasiswa, umum) yang ingin mempelajari bidang pemrograman.', 120000, 20, '682', '2016-02-05', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(35, 'Komputasi Numerik, Pemrograman MATLAB Untuk Metoda', 'Komputasi Numerik merupakan metode numerik yang memanfaatkan program komputer untuk melakukan iterasi perhitungan numerik yang terkadang rumit. Buku ini diberi judul Komputasi Numerik: Program MATLAB untuk Metode Numerik karena menyajikan berbagai metode numerik seperti pencarian akar persamaan, penyelesaian sistem persamaan linier dan sistem persamaan nonlinier, metoda diferensial dan integral, pencarian nilai pribadi (eigen value), serta metode penyelesaian persamaan diferensial biasa (ODE), persoalan nila  batas, dan persamaan diferensial parsial (PDE). Selanjutnya metode-metode penyelesaian numerik tersebut dilengkapi algoritma yang menjelaskan langkah penyelesaian setiap metode, dan setiap algoritma diimplementasikan dalam bentuk program Matlab yang diuji coba dengan berbagai contoh soal.\r\n\r\nSelain itu, buku ini memuat topik yang jarang ditemukan pada buku-buku numerik yang umum, seperti metode Monte-Carlo untuk melakukan simulasi numerik probabilitas, dan Komputasi Simbolik yang merupakan metode alternatif untuk menyelesaikan berbagai persoalan komputasi.', 192000, 20, '482', '2017-05-01', 'Soft Cover', NULL, NULL, NULL, NULL),
+	(36, 'Pemrograman Sistem Pakar', 'u ini berisi konsep dasar Sistem Pakar yang disertai contoh kasus hingga pembuatan aplikasinya menggunakan bahasa pemrograman Visual Basic 6. Diuraikan juga tahapan- tahapan analisa data sebelum sistem dibangun.\r\n\r\nBuku ini bisa menjadi referensi untuk membuat Tugas Akhir, Skripsi, maupun Tesis untuk mahasiswa jurusan Manajemen Informatika, Sistem Informasi, Teknik Komputer, Teknik Informatika, dan siapa pun yang mempelajari Sistem Pakar.\r\n', 38000, 20, '148', '2017-10-01', 'Soft Cover', NULL, NULL, NULL, NULL);
+/*!40000 ALTER TABLE `buku` ENABLE KEYS */;
+
+-- Dumping structure for table bookmart.kategori
+CREATE TABLE IF NOT EXISTS `kategori` (
+  `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_kategori` varchar(50) NOT NULL,
+  `slug` varchar(50) DEFAULT NULL,
+  `deskripsi` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_kategori`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table bookmart.kategori: ~10 rows (approximately)
+/*!40000 ALTER TABLE `kategori` DISABLE KEYS */;
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `slug`, `deskripsi`) VALUES
+	(1, 'Novel dan Sastra', 'novel-dan-sastra', 'Novel dan sastra yang terdiri dari berbagai macam genre.'),
+	(2, 'Buku Anak', 'buku-anak', 'Buku untuk anak-anak yang terdiri dari buku cerita dan buku ilmu pengetahuan.'),
+	(3, 'Komik', 'komik', 'Komik yang terdiri dari berbagai macam jenis.'),
+	(4, 'Buku Non-Fiksi', 'buku-non-fiksi', 'Buku non-fiksi yang terdiri dari berbagai macam bidang.'),
+	(5, 'Pengembangan Diri', 'pengembangan-diri', 'Buku pengembangan diri yang terbagi dua menjadi inspirasi dan motivasi.'),
+	(6, 'Bisnis, Manajemen dan Keuangan', 'bisnis-manajemen-dan-keuangan', 'Buku yang terdiri dari berbagai macam buku yang berhubungan dengan bisnis, manajemen dan keungan.'),
+	(7, 'Pendidikan dan Referensi', 'pendidikan-dan-referensi', 'Buku yang berhubungan dengan pendidikan dan referensi.'),
+	(8, 'Komputer dan Internet', 'komputer-dan-internet', 'Buku yang terdiri dari berbagai macam hal yang berhubungan dengan komputer dan internet.'),
+	(9, 'Buku Hobby', 'buku-hobby', 'Buku yang berisi mengenai hobby atau kesukaan.'),
+	(10, 'Buku Ensiklopedia', 'buku-ensiklopedia', 'Ensiklopedia adalah buku yang epic');
+/*!40000 ALTER TABLE `kategori` ENABLE KEYS */;
+
+-- Dumping structure for table bookmart.konfirmasi_order
+CREATE TABLE IF NOT EXISTS `konfirmasi_order` (
+  `id_konfirmasi` int(11) NOT NULL AUTO_INCREMENT,
+  `atas_nama` varchar(50) NOT NULL,
+  `no_rekening` varchar(50) NOT NULL,
+  `nominal` int(11) NOT NULL,
+  `keterangan` varchar(50) NOT NULL,
+  `bukti_pembayaran` varchar(100) NOT NULL,
+  `id_order` int(11) NOT NULL,
+  PRIMARY KEY (`id_konfirmasi`),
+  KEY `FK_konfirmasi_order` (`id_order`),
+  CONSTRAINT `FK_konfirmasi_order` FOREIGN KEY (`id_order`) REFERENCES `order` (`id_order`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table bookmart.konfirmasi_order: ~0 rows (approximately)
+/*!40000 ALTER TABLE `konfirmasi_order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `konfirmasi_order` ENABLE KEYS */;
+
+-- Dumping structure for table bookmart.order
+CREATE TABLE IF NOT EXISTS `order` (
+  `id_order` int(11) NOT NULL AUTO_INCREMENT,
+  `tgl_order` date NOT NULL,
+  `status_order` varchar(50) NOT NULL,
+  `invoice` varchar(50) NOT NULL,
+  `metode_pengiriman` varchar(50) NOT NULL,
+  `total` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `alamat` varchar(50) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  PRIMARY KEY (`id_order`),
+  KEY `FK_order_user` (`id_user`),
+  CONSTRAINT `FK_order_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table bookmart.order: ~0 rows (approximately)
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+
+-- Dumping structure for table bookmart.order_details
+CREATE TABLE IF NOT EXISTS `order_details` (
+  `id_orderdetails` int(11) NOT NULL AUTO_INCREMENT,
+  `qty` int(11) NOT NULL,
+  `subtotal` int(11) NOT NULL,
+  `id_order` int(11) NOT NULL,
+  `id_buku` int(11) NOT NULL,
+  PRIMARY KEY (`id_orderdetails`),
+  KEY `FK_od_order` (`id_order`),
+  KEY `FK_od_buku` (`id_buku`),
+  CONSTRAINT `FK_od_buku` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id_buku`),
+  CONSTRAINT `FK_od_order` FOREIGN KEY (`id_order`) REFERENCES `order` (`id_order`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table bookmart.order_details: ~0 rows (approximately)
+/*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
+
+-- Dumping structure for table bookmart.penerbit
+CREATE TABLE IF NOT EXISTS `penerbit` (
+  `id_penerbit` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_penerbit` varchar(50) NOT NULL,
+  `alamat_penerbit` varchar(200) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `telp_penerbit` varchar(13) NOT NULL,
+  PRIMARY KEY (`id_penerbit`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table bookmart.penerbit: ~9 rows (approximately)
+/*!40000 ALTER TABLE `penerbit` DISABLE KEYS */;
+INSERT INTO `penerbit` (`id_penerbit`, `nama_penerbit`, `alamat_penerbit`, `email`, `telp_penerbit`) VALUES
+	(1, 'Gagas Media', 'Jl. H. Montong No.57, RT.9/RW.3, Ciganjur, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630', 'gagasmedia@mail.com', '02178883030'),
+	(2, 'Republika', 'Jl. Kav. Polri J No.65, RT.6/RW.6, Jagakarsa, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 11460', 'republika@mail.com', '0217817702'),
+	(3, 'Gramedia Widiasarana Indonesia (Grasindo)', 'Jl. Palmerah Barat No.29-37, RT.4/RW.2, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270', 'grasindo@mail.com', '02153650110'),
+	(4, 'Gramedia Pustaka Utama (GPU)', 'Jakarta', 'gpu@mail.com', '02112345678'),
+	(5, 'Penerbit Erlangga', 'Jl. H. Baping No. 100, Ciracas, Jakarta Timur, Indonesia', 'penerbiterlangga@mail.com', '02123456789'),
+	(6, 'Shira Media', 'Jl. Dersono, Ceper, Wedomartani, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584', 'shiramedia@mail.com', '02134567891'),
+	(7, 'M&C', 'Kompas Gramedia, Jl. Palmerah Barat No.22-26, RT.1/RW.2, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270', 'mnc@mail.com', '02153650111'),
+	(8, 'Noura Books', 'Jl. Raya Jagakarsa No.40, RT.7/RW.4, Ciganjur, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12620', 'nourabooks@mail.com', '02178880556'),
+	(9, 'Loveable', 'Jl. Kebagusan III Kawasan Komplek Nuansa 99 Kebagusan, Jakarta Selatan, Indonesia 12520', 'loveable@mail.com', '02145678910');
+/*!40000 ALTER TABLE `penerbit` ENABLE KEYS */;
+
+-- Dumping structure for table bookmart.penulis
+CREATE TABLE IF NOT EXISTS `penulis` (
+  `id_penulis` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_penulis` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_penulis`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table bookmart.penulis: ~8 rows (approximately)
+/*!40000 ALTER TABLE `penulis` DISABLE KEYS */;
+INSERT INTO `penulis` (`id_penulis`, `nama_penulis`, `email`) VALUES
+	(1, 'Alvi Syahrin', 'alvisyahrin@mail.com'),
+	(2, 'Tere Liye', 'tereliye@mail.com'),
+	(3, 'Mark Manson', 'markmanson@mail.com'),
+	(4, 'Rintik Sedu', 'rintiksedu@mail.com'),
+	(5, 'Disney', 'disney@mail.com'),
+	(6, 'Ged Umlimi', 'gedumlimi@mail.com'),
+	(7, 'A. A. Milne', 'milne@mail.com'),
+	(8, 'Dhimas Bagus D.', 'dhimasbagus@mail.com');
+/*!40000 ALTER TABLE `penulis` ENABLE KEYS */;
+
+-- Dumping structure for table bookmart.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_user` varchar(50) NOT NULL,
+  `email_user` varchar(50) NOT NULL,
+  `telp_user` varchar(13) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `jns_kelamin` enum('L','P') NOT NULL,
+  `level` enum('User','Admin') NOT NULL DEFAULT 'User',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table bookmart.user: ~2 rows (approximately)
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`id_user`, `nama_user`, `email_user`, `telp_user`, `password`, `jns_kelamin`, `level`, `created_at`, `updated_at`) VALUES
+	(1, 'Muqiit', 'muqiit@mail.com', '0813243213', '$2y$10$YvfQ.BVRpXHVUkQgTpe2JeZ6hgjwKShrf4b1KjcUAgfnQxchKJeQi', 'L', 'User', '2020-12-21 10:43:36', '2020-12-21 10:43:36'),
+	(2, 'Siti Asy Syifa', 'ipaa2240@gmail.com', '081322730940', '$2y$10$gFSFKIm5e6z11Kd7gn2fqO7TJoCcmtZgtnPouEqinJ1iLSkDFVFu6', 'P', 'Admin', '2020-12-21 10:46:37', '2020-12-21 10:46:37');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

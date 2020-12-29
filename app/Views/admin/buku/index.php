@@ -16,8 +16,8 @@
                         </div>
                     <?php endif; ?>
                     <div class="card-header card-header-primary">
-                        <h2>Daftar Kategori</h2>
-                        <a href="/admin/kategori/create" class="btn btn-primary">Tambah Kategori</a>
+                        <h2>Daftar Buku</h2>
+                        <a href="/admin/buku/create" class="btn btn-primary">Tambah Buku</a>
                     </div>
                     <div class="card-body">
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -25,22 +25,38 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nama</th>
-                                    <th>Deskripsi</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    <th>Halaman</th>
+                                    <th>Tanggal Terbit</th>
+                                    <th>Format</th>
+                                    <th>Cover</th>
+                                    <th>Penulis</th>
+                                    <th>Penerbit</th>
+                                    <th>Kategori</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($kategori as $k) : ?>
+                                <?php foreach ($buku as $k) : ?>
                                     <tr>
-                                        <td><?= $k['id_kategori'] ?></td>
+                                        <td><?= $k['id_buku'] ?></td>
+                                        <td><?= $k['nama_buku'] ?></td>
+                                        <td><?= $k['harga'] ?></td>
+                                        <td><?= $k['stok'] ?></td>
+                                        <td><?= $k['halaman'] ?></td>
+                                        <td><?= $k['tgl_terbit'] ?></td>
+                                        <td><?= $k['format'] ?></td>
+                                        <td><?= $k['cover'] ?></td>
+                                        <td><?= $k['nama_penulis'] ?></td>
+                                        <td><?= $k['nama_penerbit'] ?></td>
                                         <td><?= $k['nama_kategori'] ?></td>
-                                        <td><?= $k['deskripsi'] ?></td>
                                         <td>
                                             <div class="d-flex">
                                                 <span class="mr-1">
-                                                    <a href="/admin/kategori/edit/<?= $k['slug'] ?>" class="btn btn-sm"><i class="fas fa-edit"></i></a>
+                                                    <a href="/admin/buku/edit/<?= $k['id_buku'] ?>" class="btn btn-sm"><i class="fas fa-edit"></i></a>
                                                 </span>
-                                                <form action="/admin/kategori/delete/<?= $k['id_kategori']; ?>" method="POST">
+                                                <form action="/admin/buku/delete/<?= $k['id_buku']; ?>" method="POST">
                                                     <?= csrf_field() ?>
                                                     <span>
                                                         <button type="submit" class="btn btn-sm"><i class="fas fa-trash-alt"></i></button>
@@ -70,6 +86,15 @@
                                 <a class="nav-link" href="#"><i class="fa fa-child"></i>Kategori</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Penulis</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Penerbit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-child"></i>User</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Order</a>
                             </li>
                         </ul>
@@ -82,7 +107,9 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            responsive: true
+        });
     });
 </script>
 <!-- Product Detail End -->

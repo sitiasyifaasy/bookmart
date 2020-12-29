@@ -45,6 +45,7 @@ class Kategori extends BaseController
 
     public function edit($slug)
     {
+        $data['validation'] = \Config\Services::validation();
         $data['kategori'] = $this->kategoriModel->where(['slug' => $slug])->first();
         return view('admin/kategori/edit', $data);
     }
@@ -76,7 +77,7 @@ class Kategori extends BaseController
 
     public function delete($id)
     {
-        $this->kategoriModel->find($id)->delete();
+        $this->kategoriModel->delete($id);
         session()->setFlashdata('pesan', 'Data kategori berhasil dihapus');
         return redirect()->to('/admin/kategori');
     }
