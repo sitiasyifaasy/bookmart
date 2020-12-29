@@ -75,6 +75,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Manage</a>
                                 <div class="dropdown-menu">
                                     <a href="/admin/kategori" class="dropdown-item">Kategori</a>
+                                    <a href="/admin/penulis" class="dropdown-item">Penulis</a>
                                     <a href="#" class="dropdown-item">Buku</a>
                                     <a href="#" class="dropdown-item">Order</a>
                                 </div>
