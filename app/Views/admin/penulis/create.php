@@ -22,7 +22,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <textarea name="email" id="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : '' ?>" cols="30" rows="6"></textarea>
+                                <input type="text" name="email" id="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : '' ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('email') ?>
                                 </div>

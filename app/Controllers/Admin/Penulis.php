@@ -22,7 +22,8 @@ class Penulis extends BaseController
 
     public function create()
     {
-        return view('admin/penulis/create');
+        $data['validation'] = \Config\Services::validation();
+        return view('admin/penulis/create', $data);
     }
 
     public function store()

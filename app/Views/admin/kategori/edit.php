@@ -15,11 +15,11 @@
                             <?php echo csrf_field() ?>
                             <div class="form-group">
                                 <label for="inputAddress">Nama Kategori</label>
-                                <input type="text" class="form-control" name="nama_kategori" id="nama_buku" value="<?= $kategori['nama_kategori'] ?>">
+                                <input type="text" class="form-control <?= ($validation->hasError('nama_kategori')) ? 'is-invalid' : '' ?>" name="nama_kategori" id="nama_buku" value="<?= $kategori['nama_kategori'] ?>">
                             </div>
                             <div class="form-group">
                                 <label for="">Deskripsi</label>
-                                <textarea name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="6"><?= $kategori['deskripsi'] ?></textarea>
+                                <textarea name="deskripsi" id="deskripsi" class="form-control <?= ($validation->hasError('deskripsi')) ? 'is-invalid' : '' ?>" cols="30" rows="6"><?= $kategori['deskripsi'] ?></textarea>
                             </div>
                             <button type="submit" class="btn btn-lg btn-primary">Submit</button>
                         </form>

@@ -21,7 +21,8 @@ class Kategori extends BaseController
 
     public function create()
     {
-        return view('admin/kategori/create');
+        $data['validation'] = \Config\Services::validation();
+        return view('admin/kategori/create', $data);
     }
 
     public function store()
