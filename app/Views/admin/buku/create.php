@@ -11,53 +11,56 @@
                         <h2>Tambah Buku</h2>
                     </div>
                     <div class="card-body">
-                        <form action="/admin/buku/store" method="POST">
+                        <form action="/admin/buku/store" method="POST" enctype="multipart/form-data">
                             <?php echo csrf_field() ?>
                             <div class="form-group">
                                 <label for="inputAddress">Nama Buku</label>
-                                <input type="text" class="form-control  <?= ($validation->hasError('nama_buku')) ? 'is-invalid' : '' ?>" name="nama_buku" id="nama_buku" placeholder="Nama Buku">
+                                <input type="text" class="form-control  <?= ($validation->hasError('nama_buku')) ? 'is-invalid' : '' ?>" name="nama_buku" id="nama_buku" placeholder="Nama Buku" value="<?= old('nama_buku') ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('nama_buku') ?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Harga</label>
-                                <input type="text" name="harga" id="harga" placeholder="Harga" class="form-control <?= ($validation->hasError('harga')) ? 'is-invalid' : '' ?>">
+                                <input type="text" name="harga" id="harga" placeholder="Harga" class="form-control <?= ($validation->hasError('harga')) ? 'is-invalid' : '' ?>" value="<?= old('harga') ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('harga') ?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Stok</label>
-                                <input type="text" name="stok" id="stok" placeholder="Stok" class="form-control <?= ($validation->hasError('stok')) ? 'is-invalid' : '' ?>">
+                                <input type="text" name="stok" id="stok" placeholder="Stok" class="form-control <?= ($validation->hasError('stok')) ? 'is-invalid' : '' ?>" value="<?= old('stok') ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('stok') ?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Halaman</label>
-                                <input type="text" name="halaman" id="halaman" placeholder="Halaman" class="form-control <?= ($validation->hasError('halaman')) ? 'is-invalid' : '' ?>">
+                                <input type="text" name="halaman" id="halaman" placeholder="Halaman" class="form-control <?= ($validation->hasError('halaman')) ? 'is-invalid' : '' ?>" value="<?= old('halaman') ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('halaman') ?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Tanggal Terbit</label>
-                                <input type="text" name="tgl_terbit" id="tgl_terbit" placeholder="Tanggal Terbit" class="form-control <?= ($validation->hasError('tgl_terbit')) ? 'is-invalid' : '' ?>">
+                                <input type="text" name="tgl_terbit" id="tgl_terbit" placeholder="Tanggal Terbit" class="form-control <?= ($validation->hasError('tgl_terbit')) ? 'is-invalid' : '' ?>" value="<?= old('tgl_terbit') ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('tgl_terbit') ?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Format</label>
-                                <input type="text" name="format" id="format" placeholder="format" class="form-control <?= ($validation->hasError('format')) ? 'is-invalid' : '' ?>">
+                                <input type="text" name="format" id="format" placeholder="format" class="form-control <?= ($validation->hasError('format')) ? 'is-invalid' : '' ?>" value="<?= old('format') ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('format') ?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Cover</label>
-                                <input type="text" name="cover" id="cover" placeholder="cover" class="form-control <?= ($validation->hasError('cover')) ? 'is-invalid' : '' ?>">
+                                <div class="custom-file">
+                                    <input type="file" name="cover" id="image" class="custom-file-input <?= ($validation->hasError('cover')) ? 'is-invalid' : '' ?>">
+                                    <label class=" custom-file-label" for="image">Choose File</label>
+                                </div>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('cover') ?>
                                 </div>

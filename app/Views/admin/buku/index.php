@@ -47,7 +47,13 @@
                                         <td><?= $k['halaman'] ?></td>
                                         <td><?= $k['tgl_terbit'] ?></td>
                                         <td><?= $k['format'] ?></td>
-                                        <td><?= $k['cover'] ?></td>
+                                        <td>
+                                            <?php if ($k['cover'] == NULL) : ?>
+                                                Tidak ada gambar
+                                            <?php else : ?>
+                                                <img src="/buku/<?= $k['cover'] ?>" alt="cover buku" style="width: 50px">
+                                            <?php endif; ?>
+                                        </td>
                                         <td><?= $k['nama_penulis'] ?></td>
                                         <td><?= $k['nama_penerbit'] ?></td>
                                         <td><?= $k['nama_kategori'] ?></td>

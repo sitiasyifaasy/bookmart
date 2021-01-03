@@ -11,10 +11,11 @@
                         <h2>Edit Buku</h2>
                     </div>
                     <div class="card-body">
-                        <form action="/admin/buku/update/<?= $buku['id_buku'] ?>" method="POST">
+                        <form action="/admin/buku/update/<?= $buku['id_buku'] ?>" enctype="multipart/form-data" method="POST">
                             <?php echo csrf_field() ?>
                             <div class="form-group">
                                 <label for="inputAddress">Nama Buku</label>
+                                <input type="hidden" name="cover_lama" value="<?= $buku['cover'] ?>">
                                 <input type="text" class="form-control <?= ($validation->hasError('nama_buku')) ? 'is-invalid' : '' ?>" name="nama_buku" id="nama_buku" value="<?= $buku['nama_buku'] ?>">
                             </div>
                             <div class="form-group">
@@ -39,7 +40,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Cover</label>
-                                <input type="text" name="cover" id="cover" class="form-control <?= ($validation->hasError('cover')) ? 'is-invalid' : '' ?>" value="<?= $buku['cover'] ?>">
+                                <div class="custom-file">
+                                    <input type="file" name="cover" id="image" class="custom-file-input <?= ($validation->hasError('cover')) ? 'is-invalid' : '' ?>">
+                                    <label class=" custom-file-label" for="image">Choose File</label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('cover') ?>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Penulis</label>
