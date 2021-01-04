@@ -149,25 +149,23 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h2>Get in Touch</h2>
+                        <h2>Layanan Pelanggan</h2>
                         <div class="contact-info">
-                            <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
-                            <p><i class="fa fa-envelope"></i>email@example.com</p>
-                            <p><i class="fa fa-phone"></i>+123-456-7890</p>
+                            <p><i class="fa fa-map-marker"></i>Jln. Bandung, Bandung</p>
+                            <p><i class="fa fa-envelope"></i>bookmart@gmail.com</p>
+                            <p><i class="fa fa-phone"></i>(021) 888999777</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h2>Follow Us</h2>
+                        <h2>Ikuti Kami</h2>
                         <div class="contact-info">
                             <div class="social">
                                 <a href=""><i class="fab fa-twitter"></i></a>
                                 <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
                                 <a href=""><i class="fab fa-instagram"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -175,22 +173,23 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h2>Company Info</h2>
+                        <h2>Informasi</h2>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Condition</a></li>
+                            <li><a href="#">Informasi Pengiriman</a></li>
+                            <li><a href="#">Cara Belanja di Bookmart</a></li>
+                            <li><a href="#">Cara Pembayaran</a></li>
+                            <li><a href="#">Cara Pengembalian</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h2>Purchase Info</h2>
+                        <h2>Tentang Kami</h2>
                         <ul>
-                            <li><a href="#">Pyament Policy</a></li>
-                            <li><a href="#">Shipping Policy</a></li>
-                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">Tentang Bookmart</a></li>
+                            <li><a href="#">Persyaratan & Ketentuan</a></li>
+                            <li><a href="#">Kebijakan Privasi/a></li>
                         </ul>
                     </div>
                 </div>
