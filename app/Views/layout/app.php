@@ -79,7 +79,7 @@
                                     <a href="/admin/penulis" class="dropdown-item">Penulis</a>
                                     <a href="/admin/penerbit" class="dropdown-item">Penerbit</a>
                                     <a href="/admin/user" class="dropdown-item">User</a>
-                                    <a href="#" class="dropdown-item">Order</a>
+                                    <a href="/admin/order" class="dropdown-item">Order</a>
                                 </div>
                             </div>
                         <?php endif; ?>
