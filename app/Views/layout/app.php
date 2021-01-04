@@ -63,15 +63,13 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link active">Beranda</a>
+                        <a href="/" class="nav-item nav-link active">Beranda</a>
                         <?php if (!session('is_login')) : ?>
                             <a href="/auth" class="nav-item nav-link">Login</a>
                             <a href="/auth" class="nav-item nav-link">Register</a>
                         <?php else : ?>
                             <a href="/auth/logout" class="nav-item nav-link">Logout</a>
                         <?php endif; ?>
-                        <a href="checkout.html" class="nav-item nav-link">Checkout</a>
-                        <a href="my-account.html" class="nav-item nav-link">Akun</a>
                         <?php if (session('level') == 'Admin') : ?>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Manage</a>
@@ -88,10 +86,15 @@
                     </div>
                     <div class="navbar-nav ml-auto">
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Akun</a>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">Logout</a>
-                                <a href="#" class="dropdown-item">Register</a>
+                                <?php if (!session('is_login')) : ?>
+                                    <a href="/auth" class="nav-item nav-link">Login</a>
+                                    <a href="/auth" class="nav-item nav-link">Register</a>
+                                <?php else : ?>
+                                    <a href="/checkout/view" class="dropdown-item">Order</a>
+                                    <a href="/auth/logout" class="dropdown-item">Logout</a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -107,8 +110,8 @@
             <div class="row align-items-center">
                 <div class="col-md-3">
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="img/logo.png" alt="Logo">
+                        <a href="/">
+                            <img src="/assets/img/logo-8.png" class="img-fluid" />
                         </a>
                     </div>
                 </div>
@@ -120,13 +123,16 @@
                 </div>
                 <div class="col-md-3">
                     <div class="user">
-                        <a href="wishlist.html" class="btn wishlist">
-                            <i class="fa fa-heart"></i>
-                            <span>(0)</span>
-                        </a>
-                        <a href="cart.html" class="btn cart">
+                        <a href="/cart" class="btn cart">
                             <i class="fa fa-shopping-cart"></i>
-                            <span>(0)</span>
+                            <span>(<?php
+                                    $cart = $cart ?? null;
+                                    if ($cart != null) {
+                                        echo $cart->totalItems();
+                                    } else {
+                                        echo '0';
+                                    }
+                                    ?>)</span>
                         </a>
                     </div>
                 </div>
