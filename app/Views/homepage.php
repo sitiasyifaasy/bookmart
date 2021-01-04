@@ -38,43 +38,15 @@
             </div>
             <div class="col-md-6">
                 <div class="header-slider normal-slider">
+                <?php foreach ($buku as $b): ?>
                     <div class="header-slider-item">
-                        <img src="/assets/img/slider-1.jpg" alt="Slider Image" />
+                        <img src="/buku/<?php echo $b['cover'] ?>" alt="Slider Image" class="img-fluid" />
                         <div class="header-slider-caption">
-                            <p>Some text goes here that describes the image</p>
+                            <p><?php echo $b['nama_buku'] ?></p>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
                         </div>
                     </div>
-                    <div class="header-slider-item">
-                        <img src="/assets/img/slider-2.jpg" alt="Slider Image" />
-                        <div class="header-slider-caption">
-                            <p>Some text goes here that describes the image</p>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="header-slider-item">
-                        <img src="/assets/img/slider-3.jpg" alt="Slider Image" />
-                        <div class="header-slider-caption">
-                            <p>Some text goes here that describes the image</p>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="header-img">
-                    <div class="img-item">
-                        <img src="/assets/img/category-1.jpg" />
-                        <a class="img-text" href="">
-                            <p>Some text goes here that describes the image</p>
-                        </a>
-                    </div>
-                    <div class="img-item">
-                        <img src="/assets/img/category-2.jpg" />
-                        <a class="img-text" href="">
-                            <p>Some text goes here that describes the image</p>
-                        </a>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
@@ -90,36 +62,36 @@
             <div class="col-lg-3 col-md-6 feature-col">
                 <div class="feature-content">
                     <i class="fab fa-cc-mastercard"></i>
-                    <h2>Secure Payment</h2>
+                    <h2>Pembayaran Aman</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur elit
+                        Pembayaran terjamin aman
                     </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 feature-col">
                 <div class="feature-content">
                     <i class="fa fa-truck"></i>
-                    <h2>Worldwide Delivery</h2>
+                    <h2>Pengiriman Luas</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur elit
+                        Dapat dikirim ke berbagai daerah
                     </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 feature-col">
                 <div class="feature-content">
                     <i class="fa fa-sync-alt"></i>
-                    <h2>90 Days Return</h2>
+                    <h2>Retur Barang 20 Hari</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur elit
+                        Pengembalian barang 20 hari sejak barang diterima
                     </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 feature-col">
                 <div class="feature-content">
                     <i class="fa fa-comments"></i>
-                    <h2>24/7 Support</h2>
+                    <h2>Bantuan 24/7</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur elit
+                        Bantuan setiap saat
                     </p>
                 </div>
             </div>
@@ -134,10 +106,10 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h1>call us for any queries</h1>
+                <h1>Hubungi Kami</h1>
             </div>
             <div class="col-md-6">
-                <a href="tel:0123456789">+012-345-6789</a>
+                <a href="tel:021888999777">(021) 888999777</a>
             </div>
         </div>
     </div>

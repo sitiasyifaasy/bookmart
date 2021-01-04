@@ -37,7 +37,9 @@
                                         <td><?= $o['invoice'] ?></td>
                                         <td><?= $o['nama'] ?></td>
                                         <td><?= $o['tgl_order'] ?></td>
-                                        <td><?= $o['status_order'] ?></td>
+                                        <td>
+                                        <?= $o['status_order'] ?>
+                                        </td>
                                         <td><?= $o['total'] ?></td>
                                         <td>
                                             <div class="d-flex">

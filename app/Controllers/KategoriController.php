@@ -9,12 +9,13 @@ class KategoriController extends BaseController
 {
 	protected $kategoriModel;
 	protected $bukuModel;
+	protected $cart;
 
 	public function __construct()
 	{
 		$this->kategoriModel = new KategoriModels();
         $this->bukuModel = new BukuModels();
-
+		$this->cart = \Config\Services::cart();
 	}
 	public function index($slug)
 	{

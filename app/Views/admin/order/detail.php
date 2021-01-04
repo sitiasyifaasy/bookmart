@@ -34,6 +34,7 @@
                                     <option value="Menunggu" <?php if($order['status_order'] == "Menunggu") : ?> selected <?php endif; ?> >Menunggu</option>
                                     <option value="Diproses" <?php if($order['status_order'] == "Diproses") : ?> selected <?php endif; ?>>Diproses</option>
                                     <option value="Dalam Pengiriman" <?php if($order['status_order'] == "Dalam Pengiriman") : ?> selected <?php endif; ?>>Dalam Pengiriman</option>
+                                    <option value="Selesai" <?php if($order['status_order'] == "Selesai") : ?> selected <?php endif; ?>>Selesai</option>
                                 </select>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

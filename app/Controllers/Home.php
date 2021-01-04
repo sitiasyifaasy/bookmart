@@ -22,6 +22,7 @@ class Home extends BaseController
 		$data['kategori'] = $this->kategoriModel->findAll();
 		$data['recent'] = $this->bukuModel->orderBy('id_buku', 'asc')->limit(6)->findAll();
 		$data['cart'] = $this->cart;
+		$data['buku'] = $this->bukuModel->where('id_penulis', 2)->findAll();
 		return view('homepage', $data);
 	}
 
