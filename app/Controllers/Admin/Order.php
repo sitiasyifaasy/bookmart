@@ -4,13 +4,16 @@ namespace App\Controllers\Admin;
 
 use App\Models\OrderModels;
 use App\Controllers\BaseController;
+use App\Models\KonfirmasiModels;
 
 class Order extends BaseController
 {
     protected $orderModel;
+    protected $konfirmasiModel;
     public function __construct()
     {
         $this->orderModel = new OrderModels();
+        $this->konfirmasiModel = new KonfirmasiModels();
     }
     public function index()
     {
@@ -21,6 +24,7 @@ class Order extends BaseController
     public function detail($id)
     {
         $data['order'] = $this->orderModel->where('id_order', $id)->first();
+        $data['konfirmasi'] = $this->konfirmasiModel->where('id_order', $id)->first();
         return view('admin/order/detail', $data);
     }
     public function updatestatus($id)

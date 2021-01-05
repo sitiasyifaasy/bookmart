@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\BukuModels;
 use App\Models\KategoriModels;
+use App\Models\KonfirmasiModels;
 use App\Models\OrderdetailsModels;
 use App\Models\OrderModels;
 
@@ -13,6 +14,7 @@ class Checkout extends BaseController
     protected $bukuModel;
     protected $orderModel;
     protected $orderDetailModel;
+    protected $konfirmasiModel;
     protected $cart;
     public function __construct()
     {
@@ -20,6 +22,7 @@ class Checkout extends BaseController
         $this->bukuModel = new BukuModels();
         $this->orderModel = new OrderModels();
         $this->orderDetailModel = new OrderdetailsModels();
+        $this->konfirmasiModel = new KonfirmasiModels();
         $this->cart = \Config\Services::cart();
     }
     public function index()
@@ -71,6 +74,61 @@ class Checkout extends BaseController
     public function view()
     {
         $data['order'] = $this->orderModel->where('id_user', session('id_user'))->findAll();
+        $data['cart'] = $this->cart;
         return view('pages/order_view', $data);
+    }
+
+    public function detail($id)
+    {
+        $data['order'] = $this->orderModel->where('id_order', $id)->first();
+        $data['order_detail'] = $this->orderDetailModel->getAllOrderDetail($id);
+        $data['order_confirm'] = $this->konfirmasiModel->where('id_order', $id)->first();
+        $data['cart'] = $this->cart;
+        return view('pages/checkout_detail', $data);
+    }
+
+    public function konfirmasi($id)
+    {
+        $data['order'] = $this->orderModel->where('id_order', $id)->first();
+        $data['validation'] = \Config\Services::validation();
+        return view('pages/konfirmasi_pembayaran', $data);
+    }
+
+    public function statuspembayaran()
+    {
+        if (!$this->validate([
+            'atas_nama' => 'required',
+            'no_rekening' => 'required',
+            'nominal' => 'required',
+            'keterangan' => 'required',
+            'nominal' => 'required',
+            // 'bukti_pembayaran' => 'max_size[bukti_pembayaran,2048]|is_image[bukti_pembayaran]',
+        ])) {
+            return redirect()->back()->withInput();
+        }
+        $fotobukti = $this->request->getFile('bukti_pembayaran');
+        $namabukti = $fotobukti->getName();
+        $fotobukti->move(ROOTPATH . 'public/konfirmasi', $namabukti);
+        $this->konfirmasiModel->save([
+            'atas_nama' => $this->request->getVar('atas_nama'),
+            'no_rekening' => $this->request->getVar('no_rekening'),
+            'nominal' => $this->request->getVar('nominal'),
+            'keterangan' =>  $this->request->getVar('keterangan'),
+            'bukti_pembayaran' => $namabukti,
+            'id_order' => $this->request->getVar('id_order'),
+        ]);
+        $this->orderModel->save([
+            'id_order' => $this->request->getVar('id_order'),
+            'status_order' => "Diproses"
+        ]);
+        return redirect('/checkout/view');
+    }
+    public function statuscancel($id)
+    {
+        $this->orderModel->save([
+            'id_order' => $id,
+            'status_order' => "Cancel"
+        ]);
+        return redirect('/checkout/view');
     }
 }

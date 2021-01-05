@@ -41,7 +41,7 @@
                                         <td>
                                             <div class="d-flex">
                                                 <span class="mr-1">
-                                                    <a href="/checkout/<?= $o['id_order'] ?>" class="btn btn-sm"><i class="fas fa-eye"></i></a>
+                                                    <a href="/checkout/detail/<?= $o['id_order'] ?>" class="btn btn-sm"><i class="fas fa-eye"></i></a>
                                                 </span>
                                             </div>
 

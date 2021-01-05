@@ -17,6 +17,18 @@
                     <?php endif; ?>
                     <div class="card-header card-header-primary">
                         <h2>Detail Order</h2>
+                        <?php if ($order['status_order'] == 'Menunggu') : ?>
+                            <span class="badge badge-pill badge-warning">Menunggu</span>
+                        <?php endif; ?>
+                        <?php if ($order['status_order'] == 'Diproses') : ?>
+                            <span class="badge badge-pill badge-info">Diproses</span>
+                        <?php endif; ?>
+                        <?php if ($order['status_order'] == 'Selesai') : ?>
+                            <span class="badge badge-pill badge-success">Selesai</span>
+                        <?php endif; ?>
+                        <?php if ($order['status_order'] == 'Cancel') : ?>
+                            <span class="badge badge-pill badge-danger">Cancel</span>
+                        <?php endif; ?>
                     </div>
                     <div class="card-body">
                         <p>Invoice : <?= $order['invoice'] ?> </p>
@@ -34,6 +46,7 @@
                                     <option value="Menunggu" <?php if ($order['status_order'] == "Menunggu") : ?> selected <?php endif; ?>>Menunggu</option>
                                     <option value="Diproses" <?php if ($order['status_order'] == "Diproses") : ?> selected <?php endif; ?>>Diproses</option>
                                     <option value="Dalam Pengiriman" <?php if ($order['status_order'] == "Dalam Pengiriman") : ?> selected <?php endif; ?>>Dalam Pengiriman</option>
+                                    <option value="Cancel" <?php if ($order['status_order'] == "Cancel") : ?> selected <?php endif; ?>>Cancel</option>
                                     <option value="Selesai" <?php if ($order['status_order'] == "Selesai") : ?> selected <?php endif; ?>>Selesai</option>
                                 </select>
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -73,6 +86,26 @@
             </div>
             <!-- Side Bar End -->
         </div>
+        <?php if (isset($konfirmasi)) : ?>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Bukti Transfer
+                        </div>
+                        <div class="card-body">
+                            <p>Dari Rekening : <?= $konfirmasi['no_rekening'] ?></p>
+                            <p>Atas Nama : <?= $konfirmasi['atas_nama'] ?></p>
+                            <p>Nominal : Rp<?= number_format($konfirmasi['nominal'], 0, ',', '.') ?></p>
+                            <p>Keterangan : <?= $konfirmasi['keterangan'] ?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 my-3">
+                    <img src="/konfirmasi/<?= $konfirmasi['bukti_pembayaran'] ?>" height="300">
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 <script>
