@@ -4,6 +4,26 @@
 <div class="checkout">
     <div class="container-fluid">
         <div class="row">
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <div class="col-md-12">
+                    <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('pesan') ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if (session()->getFlashdata('pesanerror')) : ?>
+                <div class="col-md-12">
+                    <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('pesanerror') ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
             <div class="col-lg-8">
                 <div class="checkout-inner">
                     <div class="billing-address">
@@ -71,4 +91,19 @@
         </div>
     </div>
 </div>
+<script>
+    $.ajax({
+        type: "GET",
+        crossDomain: true,
+        dataType: "jsonp",
+        url: "https://api.rajaongkir.com/starter/city",
+        // headers: {
+        //     "Accept": "application/json",
+        //     "key": "49091cfadddbed78ae8eaaf6a7535c33"
+        // },
+        success: function(data) {
+            console.log(data);
+        }
+    });
+</script>
 <?= $this->endSection(); ?>

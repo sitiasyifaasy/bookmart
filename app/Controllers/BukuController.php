@@ -30,6 +30,10 @@ class BukuController extends BaseController
             session()->setFlashdata('pesanerror', 'Anda harus login dulu untuk menambahkan ke keranjang');
             return redirect()->back();
         }
+        if (session('level') == 'Admin') {
+            session()->setFlashdata('pesanerror', 'Anda sedang login sebagai admin! Mohon logout terlebih dahulu');
+            return redirect()->back();
+        }
         $buku = $this->bukuModel->where('id_buku', $id)->first();
         $this->cart->insert([
             'id'      => $id,

@@ -4,6 +4,26 @@
 <div class="product-view">
     <div class="container-fluid">
         <div class="row">
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <div class="col-md-12">
+                    <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('pesan') ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if (session()->getFlashdata('pesanerror')) : ?>
+                <div class="col-md-12">
+                    <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('pesanerror') ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-md-12">

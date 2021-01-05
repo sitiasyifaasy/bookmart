@@ -54,6 +54,12 @@ class Checkout extends BaseController
         foreach ($this->cart->contents() as $row) {
             $row['id_order'] = $order_id;
             $row['id_buku'] = $row['id'];
+            $buku = $this->bukuModel->where('id_buku', $row['id'])->first();
+            $buku['stok'] = $buku['stok'] - $row['qty'];
+            $this->bukuModel->save([
+                'id_buku' => $buku['id_buku'],
+                'stok' => $buku['stok']
+            ]);
             $this->orderDetailModel->insert($row);
         }
         // Clear the shopping cart
