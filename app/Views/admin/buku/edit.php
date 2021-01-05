@@ -52,11 +52,7 @@
                                 <label for="">Penulis</label>
                                 <select class="form-control" name="id_penulis" id="id_penulis">
                                     <?php foreach ($penulis as $p) : ?>
-                                        <option value="<?php echo $p['id_penulis'] ?>" 
-                                        <?php if($p['id_penulis'] == $buku['id_penulis']): ?> 
-                                        selected
-                                        <?php endif; ?> 
-                                        ><?php echo $p['nama_penulis'] ?></option>
+                                        <option value="<?php echo $p['id_penulis'] ?>" <?php if ($p['id_penulis'] == $buku['id_penulis']) : ?> selected <?php endif; ?>><?php echo $p['nama_penulis'] ?></option>
                                     <?php endforeach ?>
                                 </select>
                                 <!-- <input type="text" name="id_penulis" id="id_penulis" class="form-control <?= ($validation->hasError('id_penulis')) ? 'is-invalid' : '' ?>" value="<?= $buku['id_penulis'] ?>"> -->
@@ -65,11 +61,7 @@
                                 <label for="">Penerbit</label>
                                 <select class="form-control" name="id_penerbit" id="id_penerbit">
                                     <?php foreach ($penerbit as $p) : ?>
-                                        <option value="<?php echo $p['id_penerbit'] ?>"
-                                        <?php if($p['id_penerbit'] == $buku['id_penerbit']): ?> 
-                                            selected
-                                        <?php endif; ?>
-                                        ><?php echo $p['nama_penerbit'] ?></option>
+                                        <option value="<?php echo $p['id_penerbit'] ?>" <?php if ($p['id_penerbit'] == $buku['id_penerbit']) : ?> selected <?php endif; ?>><?php echo $p['nama_penerbit'] ?></option>
                                     <?php endforeach ?>
                                 </select>
                                 <!-- <input type="text" name="id_penerbit" id="id_penerbit" class="form-control <?= ($validation->hasError('id_penerbit')) ? 'is-invalid' : '' ?>" value="<?= $buku['id_penerbit'] ?>"> -->
@@ -78,11 +70,7 @@
                                 <label for="">Kategori</label>
                                 <select class="form-control" name="id_kategori" id="id_kategori">
                                     <?php foreach ($kategori as $k) : ?>
-                                        <option value="<?php echo $k['id_kategori'] ?>"
-                                        <?php if($k['id_kategori'] == $buku['id_kategori']): ?> 
-                                            selected
-                                        <?php endif; ?>
-                                        ><?php echo $k['nama_kategori'] ?></option>
+                                        <option value="<?php echo $k['id_kategori'] ?>" <?php if ($k['id_kategori'] == $buku['id_kategori']) : ?> selected <?php endif; ?>><?php echo $k['nama_kategori'] ?></option>
                                     <?php endforeach ?>
                                 </select>
                                 <!-- <input type="text" name="id_kategori" id="id_kategori" class="form-control <?= ($validation->hasError('id_kategori')) ? 'is-invalid' : '' ?>" value="<?= $buku['id_kategori'] ?>"> -->
@@ -100,19 +88,22 @@
                     <nav class="navbar bg-light">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-female"></i>Buku</a>
+                                <a class="nav-link" href="#"> Buku</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Kategori</a>
+                                <a class="nav-link" href="#"> Kategori</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Penulis</a>
+                                <a class="nav-link" href="#"> Penulis</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Penerbit</a>
+                                <a class="nav-link" href="#"> Penerbit</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Order</a>
+                                <a class="nav-link" href="#"> User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Order</a>
                             </li>
                         </ul>
                     </nav>

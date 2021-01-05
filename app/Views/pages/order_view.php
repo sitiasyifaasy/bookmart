@@ -54,13 +54,7 @@
                 </div>
             </div>
 
-            <!-- Side Bar Start -->
-            <div class="col-lg-3 sidebar">
-                <div class="sidebar-widget category">
-                    <h2 class="title">Manage</h2>
-                </div>
-            </div>
-            <!-- Side Bar End -->
+
         </div>
     </div>
 </div>

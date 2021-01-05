@@ -26,15 +26,15 @@
                         <p>Metode Pengiriman : <?= $order['metode_pengiriman'] ?> </p>
                         <p>Total : <?= $order['total'] ?> </p>
 
-                        <form action="/admin/order/updatestatus/<?= $order['id_order']?>" method="POST">
+                        <form action="/admin/order/updatestatus/<?= $order['id_order'] ?>" method="POST">
                             <?= csrf_field(); ?>
                             <div class="form-group">
                                 <label for="">Status</label>
                                 <select name="status_order" class="form-control">
-                                    <option value="Menunggu" <?php if($order['status_order'] == "Menunggu") : ?> selected <?php endif; ?> >Menunggu</option>
-                                    <option value="Diproses" <?php if($order['status_order'] == "Diproses") : ?> selected <?php endif; ?>>Diproses</option>
-                                    <option value="Dalam Pengiriman" <?php if($order['status_order'] == "Dalam Pengiriman") : ?> selected <?php endif; ?>>Dalam Pengiriman</option>
-                                    <option value="Selesai" <?php if($order['status_order'] == "Selesai") : ?> selected <?php endif; ?>>Selesai</option>
+                                    <option value="Menunggu" <?php if ($order['status_order'] == "Menunggu") : ?> selected <?php endif; ?>>Menunggu</option>
+                                    <option value="Diproses" <?php if ($order['status_order'] == "Diproses") : ?> selected <?php endif; ?>>Diproses</option>
+                                    <option value="Dalam Pengiriman" <?php if ($order['status_order'] == "Dalam Pengiriman") : ?> selected <?php endif; ?>>Dalam Pengiriman</option>
+                                    <option value="Selesai" <?php if ($order['status_order'] == "Selesai") : ?> selected <?php endif; ?>>Selesai</option>
                                 </select>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
@@ -50,16 +50,22 @@
                     <nav class="navbar bg-light">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-female"></i>Buku</a>
+                                <a class="nav-link" href="#"> Buku</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Kategori</a>
+                                <a class="nav-link" href="#"> Kategori</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Penulis</a>
+                                <a class="nav-link" href="#"> Penulis</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Order</a>
+                                <a class="nav-link" href="#"> Penerbit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Order</a>
                             </li>
                         </ul>
                     </nav>

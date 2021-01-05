@@ -41,11 +41,11 @@
             <div class="row">
                 <div class="col-sm-6">
                     <i class="fa fa-envelope"></i>
-                    support@email.com
+                    bookmart@gmail.com
                 </div>
                 <div class="col-sm-6">
                     <i class="fa fa-phone-alt"></i>
-                    +012-345-6789
+                    (021) 888999777
                 </div>
             </div>
         </div>
@@ -195,22 +195,7 @@
                 </div>
             </div>
 
-            <div class="row payment align-items-center">
-                <div class="col-md-6">
-                    <div class="payment-method">
-                        <h2>We Accept:</h2>
-                        <img src="/assets/img/payment-method.png" alt="Payment Method" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="payment-security">
-                        <h2>Secured By:</h2>
-                        <img src="/assets/img/godaddy.svg" alt="Payment Security" />
-                        <img src="/assets/img/norton.svg" alt="Payment Security" />
-                        <img src="/assets/img/ssl.svg" alt="Payment Security" />
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
     <!-- Footer End -->

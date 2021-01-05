@@ -16,11 +16,11 @@
                         </div>
                     <?php endif; ?>
                     <div class="card-header card-header-primary">
-                        <h2>Daftar Penulis</h2>
-                        <a href="/admin/penulis/create" class="btn btn-primary">Tambah Penulis</a>
+                        <h2>Daftar Order</h2>
+                        <a href="/admin/penulis/create" class="btn btn-primary">Tambah Order</a>
                     </div>
                     <div class="card-body">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Invoice</th>
@@ -38,7 +38,7 @@
                                         <td><?= $o['nama'] ?></td>
                                         <td><?= $o['tgl_order'] ?></td>
                                         <td>
-                                        <?= $o['status_order'] ?>
+                                            <?= $o['status_order'] ?>
                                         </td>
                                         <td><?= $o['total'] ?></td>
                                         <td>
@@ -64,16 +64,22 @@
                     <nav class="navbar bg-light">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-female"></i>Buku</a>
+                                <a class="nav-link" href="#"> Buku</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Kategori</a>
+                                <a class="nav-link" href="#"> Kategori</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Penulis</a>
+                                <a class="nav-link" href="#"> Penulis</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Order</a>
+                                <a class="nav-link" href="#"> Penerbit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Order</a>
                             </li>
                         </ul>
                     </nav>

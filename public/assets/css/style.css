@@ -127,7 +127,7 @@ h2 {
     z-index: 1;
     opacity: 0;
     transition: .5s;
-    background: rgba(255, 111, 97, .7);
+    background: rgba(26,187,156, 0.75);
     border-radius: 4px;
 }
 
@@ -473,7 +473,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 111, 97, .7);
+    background: rgba(26,187,156, 0.75);
     transition: all 0.3s;
     z-index: 1;
 }

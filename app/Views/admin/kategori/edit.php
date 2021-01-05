@@ -34,13 +34,22 @@
                     <nav class="navbar bg-light">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-female"></i>Buku</a>
+                                <a class="nav-link" href="#"> Buku</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Kategori</a>
+                                <a class="nav-link" href="#"> Kategori</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Order</a>
+                                <a class="nav-link" href="#"> Penulis</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Penerbit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Order</a>
                             </li>
                         </ul>
                     </nav>

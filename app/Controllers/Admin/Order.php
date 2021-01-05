@@ -14,10 +14,10 @@ class Order extends BaseController
     }
     public function index()
     {
-        $data['order'] = $this->orderModel->where('id_user', session('id_user'))->findAll();
+        $data['order'] = $this->orderModel->findAll();
         return view('admin/order/index', $data);
     }
-    
+
     public function detail($id)
     {
         $data['order'] = $this->orderModel->where('id_order', $id)->first();

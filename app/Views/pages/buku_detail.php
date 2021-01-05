@@ -38,7 +38,12 @@
                                     </div>
                                 </div>
                                 <div class="action">
-                                    <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                    <form action="/bukucontroller/keranjang/<?php echo $buku_terpilih['id_buku'] ?>" method="POST">
+                                        <?= csrf_field(); ?>
+                                        <button class="btn btn-primary" type="submit">
+                                            ><i class="fa fa-shopping-cart"></i>Add to Cart
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +94,6 @@
                                         </a>
                                         <div class="product-action">
                                             <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
                                             <a href="/buku/<?= $r['slug'] ?>"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
