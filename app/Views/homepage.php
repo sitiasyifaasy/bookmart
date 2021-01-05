@@ -30,7 +30,7 @@
                     <ul class="navbar-nav">
                         <?php foreach ($kategori as $k) : ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="/kategori/<?php echo $k['slug'] ?>"><i class="fa fa-home"></i><?php echo $k['nama_kategori'] ?></a>
+                                <a class="nav-link" href="/kategori/<?php echo $k['slug'] ?>"><i class="fa fa-book"></i><?php echo $k['nama_kategori'] ?></a>
                             </li>
                         <?php endforeach ?>
                     </ul>

@@ -97,7 +97,7 @@
                         <ul class="navbar-nav">
                             <?php foreach ($kategori as $k) : ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/kategori/<?= $k['slug'] ?>"><i class="fa fa-home"></i><?= $k['nama_kategori'] ?></a>
+                                    <a class="nav-link" href="/kategori/<?= $k['slug'] ?>"><i class="fa fa-book"></i><?= $k['nama_kategori'] ?></a>
                                 </li>
                             <?php endforeach; ?>
 
