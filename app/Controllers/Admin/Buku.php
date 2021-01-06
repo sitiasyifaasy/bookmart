@@ -125,7 +125,7 @@ class Buku extends BaseController
             'slug' => url_title($this->request->getVar('nama_buku'), '-', true),
             'harga' => $this->request->getVar('harga'),
             'stok' => $this->request->getVar('stok'),
-            'halaman' => $this->request->getVar('stok'),
+            'halaman' => $this->request->getVar('halaman'),
             'tgl_terbit' => $this->request->getVar('tgl_terbit'),
             'format' => $this->request->getVar('format'),
             'cover' => $namaCover,

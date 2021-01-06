@@ -3,6 +3,26 @@
 <?= $this->section('content') ?>
 <div class="container">
     <div class="row">
+        <?php if (session()->getFlashdata('pesan')) : ?>
+            <div class="col-md-12">
+                <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('pesan') ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('pesanerror')) : ?>
+            <div class="col-md-12">
+                <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('pesanerror') ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
@@ -21,13 +41,6 @@
                             <input type="text" name="atas_nama" value="" class="form-control <?= ($validation->hasError('atas_nama')) ? 'is-invalid' : '' ?>" id="">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('atas_nama') ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="">No Rekening</label>
-                            <input type="numeric" name="no_rekening" value="" class="form-control <?= ($validation->hasError('no_rekening')) ? 'is-invalid' : '' ?>" id="">
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('no_rekening') ?>
                             </div>
                         </div>
                         <div class="form-group">

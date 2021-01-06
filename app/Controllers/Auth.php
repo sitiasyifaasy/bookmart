@@ -44,7 +44,6 @@ class Auth extends BaseController
             'password'           => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'jns_kelamin'        => $this->request->getVar('jns_kelamin'),
             'level'              => 'User'
-
         ]);
 
         session()->setFlashdata('pesan', 'Registrasi Berhasil ! Silahkan Login!!!');

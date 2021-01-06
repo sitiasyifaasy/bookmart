@@ -3,6 +3,26 @@
 <?= $this->section('content') ?>
 <div class="container">
     <div class="row">
+        <?php if (session()->getFlashdata('pesan')) : ?>
+            <div class="col-md-12">
+                <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('pesan') ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('pesanerror')) : ?>
+            <div class="col-md-12">
+                <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('pesanerror') ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
         <div class="col-md-9">
             <div class="card my-3">
                 <div class="card-header">
@@ -25,6 +45,12 @@
                     <p>Tanggal : <?= str_replace('-', '/', date("d-m-Y", strtotime($order['tgl_order']))) ?> </p>
                     <p>Nama Penerima : <?= $order['nama'] ?> </p>
                     <p>Alamat Penerima : <?= $order['alamat'] ?> </p>
+                    <p>Transfer ke : </p>
+                    <ul>
+                        <li>Atas Nama : Bookmart</li>
+                        <li>Bank : BNI</li>
+                        <li>No Rekening : 74329401</li>
+                    </ul>
                     <table class="table">
                         <thead>
                             <tr>

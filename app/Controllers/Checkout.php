@@ -16,6 +16,8 @@ class Checkout extends BaseController
     protected $orderDetailModel;
     protected $konfirmasiModel;
     protected $cart;
+    private $url = "https://api.rajaongkir.com/starter/";
+    private $apiKey = "49091cfadddbed78ae8eaaf6a7535c33";
     public function __construct()
     {
         $this->kategoriModel = new KategoriModels();
@@ -67,8 +69,8 @@ class Checkout extends BaseController
         }
         // Clear the shopping cart
         $this->cart->destroy();
-        session()->setFlashdata('pesan', 'Berhasil memesan buku!');
-        return redirect('/');
+        session()->setFlashdata('pesan', 'Berhasil memesan buku! Silahkan konfirmasi pembayaran');
+        return redirect()->to('/checkout/detail/' . $order_id);
     }
     //--------------------------------------------------------------------
     public function view()
@@ -111,7 +113,6 @@ class Checkout extends BaseController
         $fotobukti->move(ROOTPATH . 'public/konfirmasi', $namabukti);
         $this->konfirmasiModel->save([
             'atas_nama' => $this->request->getVar('atas_nama'),
-            'no_rekening' => $this->request->getVar('no_rekening'),
             'nominal' => $this->request->getVar('nominal'),
             'keterangan' =>  $this->request->getVar('keterangan'),
             'bukti_pembayaran' => $namabukti,
@@ -121,7 +122,8 @@ class Checkout extends BaseController
             'id_order' => $this->request->getVar('id_order'),
             'status_order' => "Diproses"
         ]);
-        return redirect('/checkout/view');
+        session()->setFlashdata('pesan', 'Berhasil konfirmasi pemesanan!');
+        return redirect()->to('/checkout/detail/' . $this->request->getVar('id_order'));
     }
     public function statuscancel($id)
     {
@@ -129,6 +131,85 @@ class Checkout extends BaseController
             'id_order' => $id,
             'status_order' => "Cancel"
         ]);
-        return redirect('/checkout/view');
+        return redirect()->to('/checkout/view');
+    }
+
+    private function rajaongkir($method, $id_province = null)
+    {
+
+        $endPoint = $this->url . $method;
+
+        if ($id_province != null) {
+            $endPoint = $endPoint . "?province=" . $id_province;
+        }
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $endPoint,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "key: " . $this->apiKey
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        return $response;
+    }
+
+    private function rajaongkircost($origin, $destination, $weight, $courier)
+    {
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "origin=" . $origin . "&destination=" . $destination . "&weight=" . $weight . "&courier=" . $courier,
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/x-www-form-urlencoded",
+                "key: " . $this->apiKey,
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        return $response;
+    }
+
+    public function get_kota()
+    {
+        if ($this->request->isAJAX()) {
+            $data = $this->rajaongkir('city');
+            return $this->response->setJSON($data);
+        }
+    }
+    public function get_cost()
+    {
+        if ($this->request->isAJAX()) {
+            $origin = $this->request->getGet('origin');
+            $destination = $this->request->getGet('destination');
+            $weight = $this->request->getGet('weight');
+            $courier = $this->request->getGet('courier');
+            $data = $this->rajaongkircost($origin, $destination, $weight, $courier);
+            return $this->response->setJSON($data);
+        }
     }
 }

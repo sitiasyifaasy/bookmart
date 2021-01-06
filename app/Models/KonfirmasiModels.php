@@ -8,6 +8,6 @@ class KonfirmasiModels extends Model
 {
     protected $table = 'konfirmasi_order';
     protected $useTimestamps = false;
-    protected $allowedFields = ['atas_nama', 'no_rekening', 'nominal', 'keterangan', 'bukti_pembayaran', 'id_order'];
+    protected $allowedFields = ['atas_nama', 'nominal', 'keterangan', 'bukti_pembayaran', 'id_order'];
     protected $primaryKey = 'id_konfirmasi';
 }

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>E Store - eCommerce HTML Template</title>
+    <title>Bookmart</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="eCommerce HTML Template Free Download" name="keywords">
     <meta content="eCommerce HTML Template Free Download" name="description">
@@ -22,6 +22,7 @@
     <link href="/assets/lib/slick/slick.css" rel="stylesheet">
     <link href="/assets/lib/slick/slick-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -29,6 +30,7 @@
     <script src="/assets/lib/slick/slick.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
     <!-- Template Stylesheet -->
     <link href="/assets/css/style.css" rel="stylesheet">
@@ -189,7 +191,7 @@
                         <ul>
                             <li><a href="#">Tentang Bookmart</a></li>
                             <li><a href="#">Persyaratan & Ketentuan</a></li>
-                            <li><a href="#">Kebijakan Privasi/a></li>
+                            <li><a href="#">Kebijakan Privasi</li>
                         </ul>
                     </div>
                 </div>
