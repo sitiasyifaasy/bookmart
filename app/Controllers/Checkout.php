@@ -49,6 +49,7 @@ class Checkout extends BaseController
             'nama' => $this->request->getVar('nama'),
             'alamat' => $this->request->getVar('alamat'),
             'total' => $this->request->getVar('total'),
+            'ongkir' => $this->request->getVar('ongkir'),
             'status_order' => "Menunggu",
             'metode_pengiriman' => $this->request->getVar('metode_pengiriman'),
             'tgl_order' => date("Y-m-d"),
@@ -100,7 +101,7 @@ class Checkout extends BaseController
     {
         if (!$this->validate([
             'atas_nama' => 'required',
-            'no_rekening' => 'required',
+            // 'no_rekening' => 'required',
             'nominal' => 'required',
             'keterangan' => 'required',
             'nominal' => 'required',

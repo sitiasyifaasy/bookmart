@@ -35,6 +35,7 @@
                                     <label>Nama</label>
                                     <input class="form-control" type="text" name="nama" placeholder="First Name">
                                     <input type="hidden" name="total" value="<?= $cart->total() ?>">
+                                    <input type="hidden" name="ongkir" value="">
                                 </div>
                                 <div class="col-md-9">
                                     <label>Alamat</label>
@@ -141,6 +142,7 @@
             $(".ongkir span").append("Rp." + value)
             $(".sub-total span").append("Rp." + total)
             $("input[name='total']").val(total)
+            $("input[name='ongkir']").val(value)
         });
 
 

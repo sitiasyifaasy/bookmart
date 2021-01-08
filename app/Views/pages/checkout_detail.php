@@ -73,8 +73,12 @@
                                 </tr>
                             <?php endforeach; ?>
                             <tr>
+                                <td colspan="3"><strong>Ongkir : </strong></td>
+                                <td class="text-center"><strong> Rp<?= number_format($order['ongkir'], 0, ',', '.') ?></strong></td>
+                            </tr>
+                            <tr>
                                 <td colspan="3"><strong>Total : </strong></td>
-                                <td class="text-center"><strong> Rp<?= number_format(array_sum(array_column($order_detail, 'subtotal')), 0, ',', '.') ?></strong></td>
+                                <td class="text-center"><strong> Rp<?= number_format($order['total'], 0, ',', '.') ?></strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -94,7 +98,6 @@
                                 Bukti Transfer
                             </div>
                             <div class="card-body">
-                                <p>Dari Rekening : <?= $order_confirm['no_rekening'] ?></p>
                                 <p>Atas Nama : <?= $order_confirm['atas_nama'] ?></p>
                                 <p>Nominal : Rp<?= number_format($order_confirm['nominal'], 0, ',', '.') ?></p>
                                 <p>Keterangan : <?= $order_confirm['keterangan'] ?></p>
